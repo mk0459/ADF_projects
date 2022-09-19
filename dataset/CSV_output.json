@@ -1,0 +1,48 @@
+{
+	"name": "CSV_output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "export"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "21",
+				"type": "String"
+			},
+			{
+				"name": "2020-02-06 00:00:00",
+				"type": "String"
+			},
+			{
+				"name": "Hpcl,Vizag",
+				"type": "String"
+			},
+			{
+				"name": "G",
+				"type": "String"
+			},
+			{
+				"name": "200",
+				"type": "String"
+			},
+			{
+				"name": "1000",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,25 @@
+{
+	"name": "trigger_test",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ppl_on_premises",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2022-09-08T18:37:00Z",
+				"endTime": "2022-09-08T18:38:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

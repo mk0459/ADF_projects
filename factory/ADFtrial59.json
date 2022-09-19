@@ -1,0 +1,9 @@
+{
+	"name": "ADFtrial59",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "72b74111-f02b-4d0a-a3a8-071e56023697",
+		"tenantId": "4a86dac5-58eb-4ef0-b178-8a5b26ace519"
+	}
+}

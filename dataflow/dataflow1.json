@@ -1,0 +1,85 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Excel1",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CSV_output",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "sort1"
+				},
+				{
+					"name": "union1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          OrderNo as integer,",
+				"          OrderDate as timestamp,",
+				"          Custmer_name as string,",
+				"          Item as string,",
+				"          Quatity as integer,",
+				"          TotalAmount as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source1 derive(OrderNo = toString(OrderNo),",
+				"          OrderDate = toString(OrderDate),",
+				"          Custmer_name = toString(Custmer_name),",
+				"          Item = toString(Item),",
+				"          Quatity = toString(Quatity),",
+				"          TotalAmount = toString(TotalAmount)) ~> derivedColumn1",
+				"union1 sort(asc(Item, true),",
+				"     partitionBy('hash', 1)) ~> sort1",
+				"derivedColumn1, source2 union(byName: true)~> union1",
+				"sort1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          {21} as string,",
+				"          {2020-02-06 00:00:00} as string,",
+				"          {Hpcl,Vizag} as string,",
+				"          G as string,",
+				"          {200} as string,",
+				"          {1000} as string",
+				"     ),",
+				"     partitionFileNames:['excelsqlunion.csv'],",
+				"     truncate: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}
