@@ -38,7 +38,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 derive(date = currentDate(),",
+				"source1 derive(date = ERROR_FUNCTION(''),",
 				"          OrderDate = toDate(OrderDate, 'dd-mm-yyyy')) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
