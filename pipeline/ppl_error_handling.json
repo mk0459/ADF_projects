@@ -41,7 +41,7 @@
 				"typeProperties": {
 					"variableName": "error_msg",
 					"value": {
-						"value": "@activity('Data flow1').output.error.message",
+						"value": "@activity('Data flow1').error.message",
 						"type": "Expression"
 					}
 				}
@@ -68,13 +68,9 @@
 				"typeProperties": {
 					"storedProcedureName": "[dbo].[df_error_insert]",
 					"storedProcedureParameters": {
-						"Createdate": {
-							"value": "",
-							"type": "DateTime"
-						},
 						"error_description": {
 							"value": {
-								"value": "@activity('Data flow1').output.error.message",
+								"value": "@variables('error_msg')",
 								"type": "Expression"
 							},
 							"type": "String"
