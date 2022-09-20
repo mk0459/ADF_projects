@@ -1,0 +1,30 @@
+{
+	"name": "AzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDestination",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dim_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "error_description",
+				"type": "varchar"
+			},
+			{
+				"name": "pipeline_name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "df_error"
+		}
+	}
+}
