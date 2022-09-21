@@ -25,9 +25,10 @@
 								"type": "Expression"
 							},
 							"modifiedDatetimeEnd": {
-								"value": "utcNow()",
+								"value": "@utcNow()",
 								"type": "Expression"
 							},
+							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
