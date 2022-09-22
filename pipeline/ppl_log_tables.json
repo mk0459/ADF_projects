@@ -36,7 +36,7 @@
 								"value": "@pipeline().RunId",
 								"type": "Expression"
 							},
-							"type": "Int32"
+							"type": "Int64"
 						},
 						"triggername": {
 							"value": {
