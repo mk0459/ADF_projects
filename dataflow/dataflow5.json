@@ -1,0 +1,60 @@
+{
+	"name": "dataflow5",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Excel1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Excel2",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {Order no} as short,",
+				"          OrderDate as date,",
+				"          {Custmer name} as string,",
+				"          Item as string,",
+				"          Quatity as short,",
+				"          TotalAmount as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          OrderDate as date,",
+				"          {Custmer name} as string,",
+				"          Item as string,",
+				"          Quatity as short,",
+				"          TotalAmount as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source1 derive(dummy = \"dummy\") ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(dummy),",
+				"     {Order no} = max({Order no}),",
+				"          each(match(), ERROR_FUNCTION('') = ERROR_FUNCTION(''))) ~> aggregate1"
+			]
+		}
+	}
+}

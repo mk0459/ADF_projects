@@ -11,6 +11,7 @@
 			"sheetName": "cust_ord",
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "ac_recievables_duplicates2.xls",
 				"container": "import"
 			},
 			"firstRowAsHeader": true
