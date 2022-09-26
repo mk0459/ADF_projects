@@ -78,7 +78,7 @@
 				"     stepValue: 1L) ~> surrogateKey1",
 				"surrogateKey1 derive({order no} = toInteger(order_id) + toInteger(max_order_id)) ~> derivedColumn2",
 				"derivedColumn2 select(mapColumn(",
-				"          order_id_new = {order no},",
+				"          {order no},",
 				"          OrderDate,",
 				"          {Custmer name},",
 				"          Item,",
