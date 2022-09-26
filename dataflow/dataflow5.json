@@ -31,7 +31,13 @@
 					"name": "join1"
 				},
 				{
-					"name": "union1"
+					"name": "surrogateKey1"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -64,7 +70,20 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1, source2 union(byName: true)~> union1"
+				"join1 keyGenerate(output(order_id as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 derive(order_id_new = toInteger(order_id) + toInteger(max_order_id)) ~> derivedColumn2",
+				"derivedColumn2 select(mapColumn(",
+				"          order_id_new,",
+				"          OrderDate,",
+				"          {Custmer name},",
+				"          Item,",
+				"          Quatity,",
+				"          TotalAmount",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
