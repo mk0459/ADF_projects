@@ -1,0 +1,19 @@
+{
+	"name": "Excel3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "csv_excel_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "importexcel"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}
