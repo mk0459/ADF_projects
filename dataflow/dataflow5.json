@@ -110,8 +110,10 @@
 				"          Quatity as string,",
 				"          TotalAmount as string",
 				"     ),",
+				"     partitionFileNames:['incremental_order_nos'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}
