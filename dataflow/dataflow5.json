@@ -19,7 +19,11 @@
 					"name": "source2"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -41,6 +45,9 @@
 				},
 				{
 					"name": "union1"
+				},
+				{
+					"name": "sort1"
 				}
 			],
 			"scriptLines": [
@@ -78,7 +85,7 @@
 				"     stepValue: 1L) ~> surrogateKey1",
 				"surrogateKey1 derive({Order no} = toInteger(order_id) + toInteger(max_order_id)) ~> derivedColumn2",
 				"derivedColumn2 select(mapColumn(",
-				"          {order no} = {Order no},",
+				"          {Order no},",
 				"          OrderDate,",
 				"          {Custmer name},",
 				"          Item,",
@@ -87,7 +94,12 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1, source1 union(byName: true)~> union1"
+				"select1, source1 union(byName: true)~> union1",
+				"union1 sort(asc({Order no}, true)) ~> sort1",
+				"sort1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
