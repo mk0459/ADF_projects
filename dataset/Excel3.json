@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": ".xlsx",
 				"container": "importexcel"
 			},
 			"firstRowAsHeader": true

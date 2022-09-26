@@ -67,7 +67,6 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFileName": ".csv",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -151,7 +150,6 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFileName": "*xlsx",
 										"enablePartitionDiscovery": false
 									}
 								},
