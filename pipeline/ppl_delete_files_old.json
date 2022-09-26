@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "source_txt_files",
+						"referenceName": "Flatfiledestination",
 						"type": "DatasetReference"
 					},
 					"logStorageSettings": {
@@ -30,7 +30,7 @@
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"modifiedDatetimeStart": {
-							"value": "@adddays(utcNow(),-5)",
+							"value": "@adddays(utcNow(),-1)",
 							"type": "Expression"
 						},
 						"modifiedDatetimeEnd": {
