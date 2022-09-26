@@ -67,6 +67,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
+										"wildcardFileName": ".csv",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -102,7 +103,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "CSV_output",
+									"referenceName": "FlatFile_source",
 									"type": "DatasetReference"
 								}
 							]
