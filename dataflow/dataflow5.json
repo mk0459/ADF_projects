@@ -21,6 +21,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "Flatfiledestination",
+						"type": "DatasetReference"
+					},
 					"name": "sink1"
 				}
 			],
@@ -98,6 +102,14 @@
 				"union1 sort(asc({Order no}, true)) ~> sort1",
 				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          OrderNo as string,",
+				"          OrderDate as string,",
+				"          Custmer_name as string,",
+				"          Item as string,",
+				"          Quatity as string,",
+				"          TotalAmount as string",
+				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
