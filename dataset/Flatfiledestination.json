@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@concat('OrderDetails_',formatDatetime(utcnow(),'dd-MM-yyy'),'.xlsx')\n\n",
-					"type": "Expression"
-				},
 				"container": "export"
 			},
 			"columnDelimiter": ",",
