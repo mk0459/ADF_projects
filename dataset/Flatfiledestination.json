@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@concat('OrderDetails_',formatDatetime(utcnow(),'dd-MM-yyy'),'.csv.zip')\n\n",
+					"value": "@concat('OrderDetails_',formatDatetime(utcnow(),'dd-MM-yyy'),'.xlsx')\n\n",
 					"type": "Expression"
 				},
 				"container": "export"
