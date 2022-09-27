@@ -47,10 +47,30 @@
 					"expression": {
 						"value": "@endswith(activity('Get Metadata1').output.itemName(),addDays(utcNow(),-1))",
 						"type": "Expression"
-					}
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "yesterday_files",
+								"value": {
+									"value": "\"true\"",
+									"type": "Expression"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
+		"variables": {
+			"yesterday_files": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
