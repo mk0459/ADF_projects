@@ -45,7 +45,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@endswith(activity('Get Metadata1').output.itemName(),addDays(utcNow(),-1))",
+						"value": "@endswith(activity('Get Metadata1').output.itemName,'')",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
