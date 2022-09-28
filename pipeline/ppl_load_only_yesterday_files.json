@@ -58,7 +58,19 @@
 								"expression": {
 									"value": "@item()",
 									"type": "Expression"
-								}
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Set variable1",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "yesterday_files",
+											"value": "'true'"
+										}
+									}
+								]
 							}
 						}
 					]
