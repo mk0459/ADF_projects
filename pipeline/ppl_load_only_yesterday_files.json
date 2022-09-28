@@ -67,7 +67,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"variableName": "yesterday_files",
-											"value": "'true'"
+											"value": ""
 										}
 									}
 								]
@@ -79,7 +79,8 @@
 		],
 		"variables": {
 			"yesterday_files": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "true"
 			}
 		},
 		"annotations": []
