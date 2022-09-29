@@ -33,44 +33,6 @@
 				}
 			},
 			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
-						"type": "Expression"
-					},
-					"activities": [
-						{
-							"name": "If Condition1",
-							"type": "IfCondition",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"expression": {
-									"value": "@if(contains(item(),json(concat('{\"name\":variables(yesterday_files)','\"type\":\"File\"}'))),true,false)",
-									"type": "Expression"
-								},
-								"ifTrueActivities": [
-									{
-										"name": "Set variable1",
-										"type": "SetVariable",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "yesterday_files",
-											"value": ""
-										}
-									}
-								]
-							}
-						}
-					]
-				}
-			},
-			{
 				"name": "Filter1",
 				"type": "Filter",
 				"dependsOn": [
