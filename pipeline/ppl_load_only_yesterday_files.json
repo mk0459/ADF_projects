@@ -35,14 +35,7 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -57,7 +50,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@if(contains(activity('Get Metadata1').output.childItems,json(concat('{\"name\":variables(yesterday_files)',',','\"type\":\"File\"}'))),true,false)",
+									"value": "@if(contains(item(),json(concat('{\"name\":variables(yesterday_files)','\"type\":\"File\"}'))),true,false)",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -68,10 +61,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"variableName": "yesterday_files",
-											"value": {
-												"value": "@concat(formatDateTime(adddays(utcnow(), -1), 'yyyyMMdd'), 'T00:00:00')",
-												"type": "Expression"
-											}
+											"value": ""
 										}
 									}
 								]
@@ -79,13 +69,53 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Set variable2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@if(contains(activity('Get Metadata1').output.childItems,json(concat('{\"name\":\"variables(yesterday_files)\"',',','\"type\":\"File\"}'))),true,false)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "yesterday_files",
+					"value": {
+						"value": "@concat(formatDateTime(adddays(utcnow(),-1), 'yyyyMMdd'), 'T00:00:00')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
 			"yesterday_files": {
-				"type": "String"
-			},
-			"new_value": {
 				"type": "String"
 			}
 		},
