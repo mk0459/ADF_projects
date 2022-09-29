@@ -70,7 +70,7 @@
 				"typeProperties": {
 					"variableName": "yesterday_files",
 					"value": {
-						"value": "@concat(formatDateTime(adddays(utcnow(),-1), 'yyyyMMdd'), 'T00:00:00')",
+						"value": "@concat(formatDateTime(adddays(utcnow(),-1), 'ddMMyyyy'))",
 						"type": "Expression"
 					}
 				}
