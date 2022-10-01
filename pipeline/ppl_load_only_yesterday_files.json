@@ -33,29 +33,6 @@
 				}
 			},
 			{
-				"name": "Filter1",
-				"type": "Filter",
-				"dependsOn": [
-					{
-						"activity": "Set variable2",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
-						"type": "Expression"
-					},
-					"condition": {
-						"value": "@if(contains(activity('Get Metadata1').output.childItems,json(concat('{\"name\":\"variables(yesterday_files)\"',',','\"type\":\"File\"}'))),true,false)",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "Set variable2",
 				"type": "SetVariable",
 				"dependsOn": [
@@ -70,14 +47,62 @@
 				"typeProperties": {
 					"variableName": "yesterday_files",
 					"value": {
-						"value": "@concat(formatDateTime(adddays(utcnow(),-1), 'ddMMyyyy'))",
+						"value": "@concat(formatDateTime(adddays(utcnow(),-1), 'ddMMyyyy'),'.txt')",
 						"type": "Expression"
 					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Set variable2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@if(endswith(item().Name,variables('yesterday_files') ),'true','false')",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Set variable3",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "abc",
+											"value": "\"success\""
+										}
+									}
+								]
+							}
+						}
+					]
 				}
 			}
 		],
 		"variables": {
 			"yesterday_files": {
+				"type": "String"
+			},
+			"abc": {
 				"type": "String"
 			}
 		},
