@@ -11,9 +11,10 @@
 			"sheetName": "cust_ord",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "ac_recievables_duplicates.xls",
-				"container": "import"
+				"fileName": "ac_recievable.xls",
+				"container": "importexcel"
 			},
+			"range": "A1:F21",
 			"firstRowAsHeader": true
 		},
 		"schema": []
