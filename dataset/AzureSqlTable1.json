@@ -9,33 +9,28 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "OrderNo",
-				"type": "int",
-				"precision": 10
+				"name": "Order no",
+				"type": "nvarchar"
 			},
 			{
 				"name": "OrderDate",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
+				"type": "nvarchar"
 			},
 			{
-				"name": "Custmer_name",
-				"type": "varchar"
+				"name": "Custmer name",
+				"type": "nvarchar"
 			},
 			{
 				"name": "Item",
-				"type": "varchar"
+				"type": "nvarchar"
 			},
 			{
 				"name": "Quatity",
-				"type": "int",
-				"precision": 10
+				"type": "nvarchar"
 			},
 			{
 				"name": "TotalAmount",
-				"type": "int",
-				"precision": 10
+				"type": "nvarchar"
 			}
 		],
 		"typeProperties": {
