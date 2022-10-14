@@ -14,8 +14,8 @@
 				"fileName": "ac_recievable.xls",
 				"container": "importexcel"
 			},
-			"range": "A1:F21",
-			"firstRowAsHeader": true
+			"range": "A3:F21",
+			"firstRowAsHeader": false
 		},
 		"schema": []
 	},
