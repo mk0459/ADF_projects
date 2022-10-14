@@ -1,0 +1,38 @@
+{
+	"name": "trigger_first_five_days",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ppl_excel_load_3row",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Month",
+				"interval": 15,
+				"startTime": "2022-10-14T16:53:00Z",
+				"endTime": "2022-11-14T00:53:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						23
+					],
+					"hours": [
+						9
+					],
+					"monthDays": [
+						1,
+						2,
+						3
+					]
+				}
+			}
+		}
+	}
+}
