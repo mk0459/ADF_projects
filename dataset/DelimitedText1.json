@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "delta_data.csv",
 				"container": "export"
 			},
 			"columnDelimiter": ",",
