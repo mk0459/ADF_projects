@@ -51,7 +51,7 @@
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@less(activity('Get Metadata1').output.lastModified, pipeline().TriggerTime)",
+						"value": "@less(ticks(activity('Get Metadata1').output.lastModified), ticks(pipeline().TriggerTime))",
 						"type": "Expression"
 					}
 				}
