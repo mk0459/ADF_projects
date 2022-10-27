@@ -11,6 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": ".csv",
+				"folderPath": "import1",
 				"container": "import"
 			},
 			"columnDelimiter": ",",
