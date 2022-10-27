@@ -1,0 +1,63 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "vmukesh0459-df"
+		},
+		"CSVSource_linkedservice_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CSVSource_linkedservice'"
+		},
+		"CSVDestination_linked_service_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CSVDestination_linked_service'"
+		},
+		"event_trigger_test_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/ae579186-d653-4527-be55-047bdeb295ae/resourceGroups/datafactory-rg155/providers/Microsoft.Storage/storageAccounts/storageaccount459"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "vmukesh0459-df_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"CSVSource_linkedservice_connectionString": {
+						"value": "[parameters('CSVSource_linkedservice_connectionString')]"
+					},
+					"CSVDestination_linked_service_connectionString": {
+						"value": "[parameters('CSVDestination_linked_service_connectionString')]"
+					},
+					"event_trigger_test_properties_typeProperties_scope": {
+						"value": "[parameters('event_trigger_test_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

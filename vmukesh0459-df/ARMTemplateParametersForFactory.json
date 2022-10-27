@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "vmukesh0459-df"
+		},
+		"CSVSource_linkedservice_connectionString": {
+			"value": ""
+		},
+		"CSVDestination_linked_service_connectionString": {
+			"value": ""
+		},
+		"event_trigger_test_properties_typeProperties_scope": {
+			"value": "/subscriptions/ae579186-d653-4527-be55-047bdeb295ae/resourceGroups/datafactory-rg155/providers/Microsoft.Storage/storageAccounts/storageaccount459"
+		}
+	}
+}
