@@ -1,0 +1,21 @@
+{
+	"name": "CSV_destination",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CSVDestination_linked_service",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "export"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

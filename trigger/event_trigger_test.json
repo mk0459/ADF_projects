@@ -1,0 +1,26 @@
+{
+	"name": "event_trigger_test",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1_test",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/import/blobs/import1",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": false,
+			"scope": "/subscriptions/ae579186-d653-4527-be55-047bdeb295ae/resourceGroups/datafactory-rg155/providers/Microsoft.Storage/storageAccounts/storageaccount459",
+			"events": [
+				"Microsoft.Storage.BlobCreated",
+				"Microsoft.Storage.BlobDeleted"
+			]
+		}
+	}
+}
