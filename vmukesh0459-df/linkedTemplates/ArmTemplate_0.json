@@ -64,6 +64,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
+						"fileName": ".csv",
 						"folderPath": "import1",
 						"container": "import"
 					},
@@ -127,7 +128,7 @@
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
-									"wildcardFileName": ".CSV",
+									"wildcardFileName": "*.CSV",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -200,7 +201,7 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/import/blobs/import1",
+					"blobPathBeginsWith": "/import/blobs/import1/",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": false,
 					"scope": "[parameters('event_trigger_test_properties_typeProperties_scope')]",
