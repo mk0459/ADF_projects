@@ -7,13 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "vmukesh0459-df"
 		},
-		"CSVSource_linkedservice_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'CSVSource_linkedservice'"
-		},
 		"CSVDestination_linked_service_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CSVDestination_linked_service'"
+		},
+		"CSVSource_linkedservice_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CSVSource_linkedservice'"
 		},
 		"event_trigger_test_properties_typeProperties_scope": {
 			"type": "string",
@@ -104,19 +104,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/CSVSource_linkedservice')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('CSVSource_linkedservice_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/CSVSource')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -130,7 +117,6 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "*.CSV",
 						"folderPath": "import1",
 						"container": "import"
 					},
@@ -143,19 +129,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/CSVSource_linkedservice')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CSVDestination_linked_service')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('CSVDestination_linked_service_connectionString')]"
-				}
-			},
-			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CSV_destination')]",
@@ -182,6 +155,32 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/CSVDestination_linked_service')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CSVDestination_linked_service')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('CSVDestination_linked_service_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CSVSource_linkedservice')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('CSVSource_linkedservice_connectionString')]"
+				}
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/event_trigger_test')]",

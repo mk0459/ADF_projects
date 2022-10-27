@@ -7,13 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "vmukesh0459-df"
 		},
-		"CSVSource_linkedservice_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'CSVSource_linkedservice'"
-		},
 		"CSVDestination_linked_service_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CSVDestination_linked_service'"
+		},
+		"CSVSource_linkedservice_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CSVSource_linkedservice'"
 		},
 		"event_trigger_test_properties_typeProperties_scope": {
 			"type": "string",
@@ -46,11 +46,11 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"CSVSource_linkedservice_connectionString": {
-						"value": "[parameters('CSVSource_linkedservice_connectionString')]"
-					},
 					"CSVDestination_linked_service_connectionString": {
 						"value": "[parameters('CSVDestination_linked_service_connectionString')]"
+					},
+					"CSVSource_linkedservice_connectionString": {
+						"value": "[parameters('CSVSource_linkedservice_connectionString')]"
 					},
 					"event_trigger_test_properties_typeProperties_scope": {
 						"value": "[parameters('event_trigger_test_properties_typeProperties_scope')]"

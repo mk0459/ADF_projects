@@ -5,10 +5,10 @@
 		"factoryName": {
 			"value": "vmukesh0459-df"
 		},
-		"CSVSource_linkedservice_connectionString": {
+		"CSVDestination_linked_service_connectionString": {
 			"value": ""
 		},
-		"CSVDestination_linked_service_connectionString": {
+		"CSVSource_linkedservice_connectionString": {
 			"value": ""
 		},
 		"event_trigger_test_properties_typeProperties_scope": {
