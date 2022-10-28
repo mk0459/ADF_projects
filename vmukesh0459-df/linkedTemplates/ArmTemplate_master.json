@@ -15,7 +15,15 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CSVSource_linkedservice'"
 		},
-		"event_trigger_test_properties_typeProperties_scope": {
+		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilepath": {
+			"type": "string",
+			"defaultValue": "@triggerBody().Filepath"
+		},
+		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().Filename"
+		},
+		"event_trigger_test2_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/ae579186-d653-4527-be55-047bdeb295ae/resourceGroups/datafactory-rg155/providers/Microsoft.Storage/storageAccounts/storageaccount459"
 		},
@@ -52,8 +60,14 @@
 					"CSVSource_linkedservice_connectionString": {
 						"value": "[parameters('CSVSource_linkedservice_connectionString')]"
 					},
-					"event_trigger_test_properties_typeProperties_scope": {
-						"value": "[parameters('event_trigger_test_properties_typeProperties_scope')]"
+					"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilepath": {
+						"value": "[parameters('event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilepath')]"
+					},
+					"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilename": {
+						"value": "[parameters('event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilename')]"
+					},
+					"event_trigger_test2_properties_typeProperties_scope": {
+						"value": "[parameters('event_trigger_test2_properties_typeProperties_scope')]"
 					}
 				}
 			},

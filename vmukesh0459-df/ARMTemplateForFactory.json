@@ -15,7 +15,15 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CSVSource_linkedservice'"
 		},
-		"event_trigger_test_properties_typeProperties_scope": {
+		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilepath": {
+			"type": "string",
+			"defaultValue": "@triggerBody().Filepath"
+		},
+		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().Filename"
+		},
+		"event_trigger_test2_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/ae579186-d653-4527-be55-047bdeb295ae/resourceGroups/datafactory-rg155/providers/Microsoft.Storage/storageAccounts/storageaccount459"
 		}
@@ -25,7 +33,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1_test')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline1_test_using_parameters')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -80,7 +88,16 @@
 							{
 								"referenceName": "CSVSource",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Filepath": {
+										"value": "@pipeline().parameters.SourceFilepath",
+										"type": "Expression"
+									},
+									"Filename": {
+										"value": "@pipeline().parameters.SourceFilename",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
@@ -95,6 +112,14 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"parameters": {
+					"SourceFilepath": {
+						"type": "string"
+					},
+					"SourceFilename": {
+						"type": "string"
+					}
 				},
 				"annotations": []
 			},
@@ -112,14 +137,27 @@
 					"referenceName": "CSVSource_linkedservice",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Filepath": {
+						"type": "string"
+					},
+					"Filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": ".csv",
-						"folderPath": "import1",
-						"container": "import"
+						"fileName": {
+							"value": "@dataset().Filename",
+							"type": "Expression"
+						},
+						"container": {
+							"value": "@dataset().Filepath",
+							"type": "Expression"
+						}
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -184,7 +222,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/event_trigger_test')]",
+			"name": "[concat(parameters('factoryName'), '/event_trigger_test2')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -193,18 +231,21 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "pipeline1_test",
+							"referenceName": "pipeline1_test_using_parameters",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"SourceFilepath": "[parameters('event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilepath')]",
+							"SourceFilename": "[parameters('event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilename')]"
+						}
 					}
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/import/blobs/import1/",
+					"blobPathBeginsWith": "/import/blobs/import1",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": false,
-					"scope": "[parameters('event_trigger_test_properties_typeProperties_scope')]",
+					"scope": "[parameters('event_trigger_test2_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated",
 						"Microsoft.Storage.BlobDeleted"
@@ -212,7 +253,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline1_test')]"
+				"[concat(variables('factoryId'), '/pipelines/pipeline1_test_using_parameters')]"
 			]
 		}
 	]

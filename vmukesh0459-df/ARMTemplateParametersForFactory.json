@@ -11,7 +11,13 @@
 		"CSVSource_linkedservice_connectionString": {
 			"value": ""
 		},
-		"event_trigger_test_properties_typeProperties_scope": {
+		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilepath": {
+			"value": "@triggerBody().Filepath"
+		},
+		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilename": {
+			"value": "@triggerBody().Filename"
+		},
+		"event_trigger_test2_properties_typeProperties_scope": {
 			"value": "/subscriptions/ae579186-d653-4527-be55-047bdeb295ae/resourceGroups/datafactory-rg155/providers/Microsoft.Storage/storageAccounts/storageaccount459"
 		}
 	}
