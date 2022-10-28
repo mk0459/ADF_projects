@@ -242,7 +242,7 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/import/blobs/import1",
+					"blobPathBeginsWith": "/import/blobs/import1/",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": false,
 					"scope": "[parameters('event_trigger_test2_properties_typeProperties_scope')]",
