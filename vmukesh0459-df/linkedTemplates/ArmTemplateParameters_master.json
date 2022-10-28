@@ -12,10 +12,10 @@
 			"value": ""
 		},
 		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilepath": {
-			"value": "@trigger().outputs.body.Filepath"
+			"value": "@triggerBody().folderpath"
 		},
 		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilename": {
-			"value": "@trigger().outputs.body.Filename"
+			"value": "@triggerBody().filename"
 		},
 		"event_trigger_test2_properties_typeProperties_scope": {
 			"value": "/subscriptions/ae579186-d653-4527-be55-047bdeb295ae/resourceGroups/datafactory-rg155/providers/Microsoft.Storage/storageAccounts/storageaccount459"
