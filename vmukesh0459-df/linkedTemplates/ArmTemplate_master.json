@@ -17,11 +17,11 @@
 		},
 		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilepath": {
 			"type": "string",
-			"defaultValue": "@triggerBody().Filepath"
+			"defaultValue": "@trigger().outputs.body.Filepath"
 		},
 		"event_trigger_test2_properties_pipeline1_test_using_parameters_parameters_SourceFilename": {
 			"type": "string",
-			"defaultValue": "@triggerBody().Filename"
+			"defaultValue": "@trigger().outputs.body.Filename"
 		},
 		"event_trigger_test2_properties_typeProperties_scope": {
 			"type": "string",
