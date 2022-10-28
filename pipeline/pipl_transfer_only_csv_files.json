@@ -35,7 +35,7 @@
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"fileExtension": ""
 						}
 					},
 					"enableStaging": false,
@@ -55,6 +55,10 @@
 						"parameters": {
 							"filepathd": {
 								"value": "@pipeline().parameters.filepath",
+								"type": "Expression"
+							},
+							"filenamed": {
+								"value": "@pipeline().parameters.filename",
 								"type": "Expression"
 							}
 						}
