@@ -5,12 +5,19 @@
 			"referenceName": "CSV_only_linked_service",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"filepathd": {
+				"type": "string"
+			},
+			"filenamed": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "import"
+				"type": "AzureBlobStorageLocation"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
