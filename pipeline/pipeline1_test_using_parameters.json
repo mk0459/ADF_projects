@@ -51,7 +51,13 @@
 				"inputs": [
 					{
 						"referenceName": "CSVSource",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Filepath": {
+								"value": "@pipeline().parameters.SourceFilepath",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
