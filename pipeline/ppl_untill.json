@@ -101,8 +101,8 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": true,
-								"validateDataConsistency": true,
+								"enableStaging": false,
+								"validateDataConsistency": false,
 								"translator": {
 									"type": "TabularTranslator",
 									"typeConversion": true,
