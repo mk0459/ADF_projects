@@ -83,7 +83,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFileName": ".csv",
+										"wildcardFileName": "*.csv",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -101,7 +101,8 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false,
+								"enableStaging": true,
+								"validateDataConsistency": true,
 								"translator": {
 									"type": "TabularTranslator",
 									"typeConversion": true,
